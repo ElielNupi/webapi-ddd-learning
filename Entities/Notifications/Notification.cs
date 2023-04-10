@@ -33,5 +33,20 @@ namespace Entities.Notifications
 
             return true;
         }
+
+        public bool DecimalPropoertyValidation(decimal value, string propoertyName)
+        {
+            if ( value < 1 || string.IsNullOrWhiteSpace(propoertyName))
+            {
+                Notify.Add(new Notification
+                {
+                    Message = "Valor deve ser maior do que 1",
+                    PropoertyName = propoertyName
+                });
+
+                return false;
+            }
+            return true;
+        }
     }
 }
